@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "4d39092e-0214-4e96-a73b-8e59b7f45668",
+		"name": "Open AI API Responses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44998792",
+		"_collection_link": "https://learnwithsai.postman.co/workspace/Learn-With-Sai's-Workspace~d31b6951-ebb8-4b1c-8d84-4e7b72077e95/collection/44998792-4d39092e-0214-4e96-a73b-8e59b7f45668?action=share&source=collection_link&creator=44998792"
+	},
+	"item": [
+		{
+			"name": "tool",
+			"item": [
+				{
+					"name": "Create Vector Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"learn_with_sai_store\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/vector_stores",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"vector_stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload File TO OpenAI",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "purpose",
+									"value": "assistants",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/sai/Downloads/brown dragon.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/files",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link File to VS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"file_ids\": [\"file-C9WAqLcPf8zngzijzmj3Te\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/vector_stores/vs_6829fda7a6c88191b726cce528cde65e/file_batches",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"vector_stores",
+								"vs_6829fda7a6c88191b726cce528cde65e",
+								"file_batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data From File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"model\": \"gpt-4.1\",\r\n    \"tools\": [{\r\n      \"type\": \"file_search\",\r\n      \"vector_store_ids\": [\"vs_6829fda7a6c88191b726cce528cde65e\"]\r\n    }],\r\n    \"input\": \"What are the attributes of an ancient brown dragon?\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/responses",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"responses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Model Response",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"gemini-2.0-flash\",\r\n    \"input\": \"Tell me a three sentence bedtime story about a unicorn.\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/responses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generarate Response For Images",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"gpt-4.1\",\r\n    \"input\": [\r\n      {\r\n        \"role\": \"user\",\r\n        \"content\": [\r\n          {\"type\": \"input_text\", \"text\": \"what is in this image?\"},\r\n          {\r\n            \"type\": \"input_image\",\r\n            \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/responses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "streaming",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"gpt-4.1\",\r\n    \"instructions\": \"You are a helpful assistant.\",\r\n    \"input\": \"Hello!\",\r\n    \"stream\": true\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/responses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get response",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openai.com/v1/responses/resp_6826151baae081918e6ba7a7b284d60b0e8d0127deb4b5c0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses",
+						"resp_6826151baae081918e6ba7a7b284d60b0e8d0127deb4b5c0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete response",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.openai.com/v1/responses/resp_6826140e08e0819198e61805a5f525790876fbd3558ca6e0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses",
+						"resp_6826140e08e0819198e61805a5f525790876fbd3558ca6e0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openai.com/v1/responses/resp_6826151baae081918e6ba7a7b284d60b0e8d0127deb4b5c0/input_items",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses",
+						"resp_6826151baae081918e6ba7a7b284d60b0e8d0127deb4b5c0",
+						"input_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat response",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"model\": \"gpt-4.1\",\r\n  \"input\": [\r\n    {\r\n      \"role\": \"system\",\r\n      \"content\": [\r\n        {\r\n          \"type\": \"input_text\",\r\n          \"text\": \"The goal is to provide clear, helpful information and solve common issues users might have with deliveries.\\n\\n# Steps\\n\\n- Understand the specific delivery-related issue or question presented by the user.\\n- Gather any necessary details from the user, such as order number, tracking information, or expected delivery date.\\n- Provide a clear and concise response addressing the user\\\"s query.\\n- Offer additional support or contact information if the issue requires further assistance.\\n\\n# Output Format\\n\\nThe response should be in a clear and polite manner, structured in short paragraphs. Use a friendly and professional tone.\\n\\n# Examples\\n\\nExample 1:\\n- **User Query**: \\\"I haven\\\"t received my package yet, and it was supposed to be delivered yesterday.\\\"\\n- **System Message**: \\\"Thank you for reaching out. I apologize for the delay. Could you please provide your order number so I can check the status of your delivery? In the meantime, you can track your package using our online tracking tool.\\\"\\n\\nExample 2:\\n- **User Query**: \\\"I received the wrong item in my order.\\\"\\n- **System Message**: \\\"I\\\"m sorry to hear about the inconvenience. Could you please provide your order number and a brief description of the item you received? We\\\"ll work on resolving this issue quickly for you.\\\"\\n\\n# Notes\\n\\n- Ensure the response is empathetic and seeks to resolve the user\\\"s concern efficiently.\\n- Encourage users to provide specific details needed to address their queries effectively.\\n- Include contact information or a method to escalate the issue if necessary.\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": [\r\n        {\r\n          \"type\": \"input_text\",\r\n          \"text\": \"hi\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"role\": \"assistant\",\r\n      \"content\": [\r\n        {\r\n          \"type\": \"output_text\",\r\n          \"text\": \"Hello! How can I assist you with your delivery today? If you have a question or are experiencing an issue with a recent order, please let me know the details. Providing your order number or tracking information will help me assist you more efficiently. If you need urgent help, let me know, and I can direct you to our support team.\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": [\r\n        {\r\n          \"type\": \"input_text\",\r\n          \"text\": \"What is the status of Order O143\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"text\": {\r\n    \"format\": {\r\n      \"type\": \"text\"\r\n    }\r\n  },\r\n  \"reasoning\": {},\r\n  \"tools\": [],\r\n  \"temperature\": 1,\r\n  \"max_output_tokens\": 2048,\r\n  \"top_p\": 1,\r\n  \"store\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/responses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "function",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"gpt-4.1\",\r\n    \"input\": \"What is the weather like in Boston today?\",\r\n    \"tools\": [\r\n      {\r\n        \"type\": \"function\",\r\n        \"name\": \"get_current_weather\",\r\n        \"description\": \"Get the current weather in a given location\",\r\n        \"parameters\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"location\": {\r\n              \"type\": \"string\",\r\n              \"description\": \"The city and state, e.g. San Francisco, CA\"\r\n            },\r\n            \"unit\": {\r\n              \"type\": \"string\",\r\n              \"enum\": [\"celsius\", \"fahrenheit\"]\r\n            }\r\n          },\r\n          \"required\": [\"location\", \"unit\"]\r\n        }\r\n      }\r\n    ],\r\n    \"tool_choice\": \"auto\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/responses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
